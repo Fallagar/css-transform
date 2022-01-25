@@ -1,10 +1,26 @@
-#wrapper {
-  display: grid;
-  /* grid-template-columns: repeat(auto-fill, minmax(45px, 1fr)); */
-  /* This is better for small screens, once min() is better supported */
-  grid-template-columns: repeat(auto-fill, minmax(min(45px, 100%), 1fr));
-  gap: 0.1rem;
+body {
+  background-color: lightslategray;
 }
-#wrapper > * {
+#wrapper {
+  height: 800px;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  flex-wrap: wrap;
+}
+#wrapper > div {
   border: solid;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#wrapper > div:hover {
+  background-color: magenta;
+  transform: scale(1.5);
 }

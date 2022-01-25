@@ -1,54 +1,51 @@
-const allChildren = document.querySelectorAll("div > div ");
-const wrDiv = document.querySelector("#wrapper");
-const wrDivChildren = document.querySelector("#wrapper").children;
+const buttons = document.querySelector("#wrapper").children;
+const wrapper = document.querySelector("#wrapper");
+const monthNamesObj = {
+    "January": 31, "February": 28, "March": 31, "April": 30, "May": 31, "June": 30,
+    "July": 31, "August": 31, "September": 30, "October": 31, "November": 30, "December": 31
+}
+const monthNames = Object.keys(monthNamesObj);
+var year = 0;
+var month = 0;
+var day = 0;
+function getStartDate() {
+    for (let i = 2010; i < 2021; i++) {
+        const paraYear = document.createElement("div");
+        paraYear.innerHTML = `${i}`;
+        document.querySelector("#wrapper").appendChild(paraYear);
 
-function start(howMany) {
-    for (let n = 0; n <= howMany; n++) {
-        const para = document.createElement("div");
-        para.setAttribute("style", `color:blue;`)
-        wrDiv.appendChild(para);
+    }
+    for (let i = 0; i < buttons.length; i++) {
+        buttons.item(i).addEventListener("click", function () { writeToYear(buttons.item(i).innerHTML) });
         
     }
-    for (let i = 0; i < wrDiv.childElementCount; i++) {
-        wrDivChildren.item(i).innerHTML = `${i}`
+
+    function writeToYear(inner) {
+        year = inner;
+        while (wrapper.firstChild) {
+            wrapper.firstChild.remove()
+        }
+        for (let i = 0; i < 12; i++) {
+            const paraMonth = document.createElement("div");
+            paraMonth.innerHTML = `${monthNames[i]}`;
+            document.querySelector("#wrapper").appendChild(paraMonth);
+        }
+        for (let i = 0; i < 12; i++) {
+            buttons.item(i).addEventListener("click", function () { writeToMonth(buttons.item(i).innerHTML) });
+            
+        }
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const startDate = document.querySelector("#first");
-// const endDate = document.querySelector("#second");
-// const calculate = document.querySelector("#third");
-// const result = document.querySelector("#result")
-
-
-// startDate.addEventListener("click", newStyle);
-// endDate.addEventListener("click", newStyleTwo);
-// calculate.addEventListener("click", showResultWindow)
-
-// function newStyle() {
-//     endDate.classList.add("endclass");
-//     }
-// function newStyleTwo() {
-//     calculate.classList.add("calculateClass");
-// }
-// function showResultWindow() {
-//     result.classList.add("resultClass");
-//    }
-// function newStyleTwo() {
-//     result.classList.add("resultClass");
-//     test.innerHTML = "You clicked ENDDATE";
-//     }    
+    function writeToMonth(value) {
+        month = value;
+        while (wrapper.firstChild) {
+            wrapper.firstChild.remove()
+        }
+        console.log(`I am here, value is ${value},  Object is - ${monthNamesObj}`);
+        for (let i = 1; i <= monthNamesObj.valueOf(value); i++) {
+            const paraDay = document.createElement("div");
+            paraDay.innerHTML = `${i}`;
+            document.querySelector("#wrapper").appendChild(paraDay);
+        }
+        console.log("And HERE");
+    }
+}    
