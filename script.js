@@ -1,23 +1,44 @@
 const startDate = document.querySelector("#first");
 const endDate = document.querySelector("#second");
 const calculate = document.querySelector("#third");
+const start = document.querySelector("#start")
 const result = document.querySelector("#result")
 
 
-startDate.addEventListener("click", newStyle);
-endDate.addEventListener("click", newStyleTwo);
-calculate.addEventListener("click", showResultWindow)
+start.addEventListener("click", rmStart);
+startDate.addEventListener("click", showEnd)
+endDate.addEventListener("click", showCalc);
+calculate.addEventListener("click", rmStart)
 
-function newStyle() {
-    endDate.classList.add("endclass");
+function rmStart() {
+    start.classList.add("start");
+    startDate.classList.add("first");
     }
-function newStyleTwo() {
-    calculate.classList.add("calculateClass");
+function showEnd() {
+    endDate.classList.add("second");
 }
-function showResultWindow() {
-    result.classList.add("resultClass");
+function showCalc() {
+    calculate.classList.add("third");
    }
+// // function newStyleTwo() {
+// //     result.classList.add("resultClass");
+// //     test.innerHTML = "You clicked ENDDATE";
+// //     }    
+
+// startDate.addEventListener("click", newStyle);
+// endDate.addEventListener("click", newStyleTwo);
+// calculate.addEventListener("click", showResultWindow)
+
+// function newStyle() {
+//     endDate.classList.add("endclass");
+//     }
 // function newStyleTwo() {
+//     calculate.classList.add("calculateClass");
+// }
+// function showResultWindow() {
 //     result.classList.add("resultClass");
-//     test.innerHTML = "You clicked ENDDATE";
-//     }    
+//    }
+// // function newStyleTwo() {
+// //     result.classList.add("resultClass");
+// //     test.innerHTML = "You clicked ENDDATE";
+// //     }    
