@@ -8,7 +8,7 @@ const result = document.querySelector("#result")
 start.addEventListener("click", rmStart);
 startDate.addEventListener("click", showEnd)
 endDate.addEventListener("click", showCalc);
-calculate.addEventListener("click", rmStart)
+calculate.addEventListener("click", showResult)
 
 function rmStart() {
     start.classList.add("start");
@@ -19,7 +19,10 @@ function showEnd() {
 }
 function showCalc() {
     calculate.classList.add("third");
-   }
+}
+   function showResult() {
+    result.classList.add("result");
+}
 // // function newStyleTwo() {
 // //     result.classList.add("resultClass");
 // //     test.innerHTML = "You clicked ENDDATE";

@@ -89,6 +89,21 @@ footer {
     justify-content: space-evenly;
     align-items: center;
   }
+  #result {
+    top: 170px;
+    position: absolute;
+    margin: 2px;
+    color: white;
+    display: flex;
+    border-radius: 20px;
+    width: 250px;
+    height: 150px;
+    border: solid;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+    align-items: center;
+  }
   #start {
     top: 100px;
     transition: all 1s ease-out;
@@ -106,21 +121,34 @@ footer {
     opacity: 1 !important;
   }
   #second {
-    top: 35px;
     opacity: 0%;
+    top: 35px;
+    visibility: hidden;
   }
   .second {
     top: 120px;
     transition: all 2s ease-out;
+    visibility: visible !important;
     opacity: 100% !important;
   }
   #third {
+    opacity: 0%;
     top: 94px;
-    opacity: 0;
+    visibility: hidden;
   }
   .third {
     transition: all 2s ease-out;
-    opacity: 1 !important;
+    visibility: visible !important;
+    opacity: 100% !important;
+  }
+  #result {
+    opacity: 0%;
+    visibility: hidden;
+  }
+  .result {
+    transition: all 2s ease-out;
+    visibility: visible !important;
+    opacity: 100% !important;
   }
   input {
     width: 125px;
