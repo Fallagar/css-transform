@@ -1,26 +1,67 @@
 body {
   background-color: lightslategray;
-}
-#wrapper {
-  height: 800px;
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 100px;
-  flex-wrap: wrap;
-}
-#wrapper > div {
-  border: solid;
-  height: 100px;
-  width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+#begin {
+  display: flex;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: "Anton", sans-serif;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#end {
+  visibility: hidden;
+  display: flex;
+  width: 300px;
+  justify-content: center;
+  cursor: pointer;
+  font-family: "Anton", sans-serif;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#wrapper {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 320px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#wrapper > div {
+  font-family: "Anton", sans-serif;
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  margin: 2px;
+  border: 1px solid rgb(80, 89, 92);
+  font-size: 1.5rem;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 #wrapper > div:hover {
-  background-color: magenta;
-  transform: scale(1.5);
+  transition: all 0.5s ease-out;
+  background-color: rgb(50, 59, 61);
+  transform: scale(1.1);
+  color: white;
 }
