@@ -2,8 +2,12 @@ const buttons = document.querySelector("#wrapper").children;
 const wrapper = document.querySelector("#wrapper");
 const begin = document.querySelector("#begin");
 const end = document.querySelector("#end");
+const reload = document.querySelector("#rld");
+const header = document.querySelector("header");
+reload.addEventListener("click", function () {location.reload()});
 begin.addEventListener("click", function () { getStartDate() });
 end.addEventListener("click", function () { getEndDate() });
+
 const monthNamesObj = {
     "Jan": 31, "Feb": 28, "Mar": 31, "April": 30, "May": 31, "Jun": 30,
     "Jul": 31, "Aug": 31, "Sep": 30, "Oct": 31, "Nov": 30, "Dec": 31
@@ -19,7 +23,8 @@ var dayEnd = 0;
 
 
 function getStartDate() {
-    begin.setAttribute("style", "visibility:hidden;")
+    header.setAttribute("style", "visibility:hidden")
+    begin.setAttribute("style", "display:none;")
     end.setAttribute("style", "visibility:hidden;")
     for (let i = 2010; i < 2021; i++) {
         const paraYear = document.createElement("div");
@@ -69,9 +74,10 @@ function getStartDate() {
     function writeToDay(val2) {
         dayStart = val2;
         delChildren();
-        begin.innerHTML = `Start Date: ${dayStart}, ${monthStart}, ${yearStart}`;
+        begin.innerHTML = `<span>Start Date: ${dayStart}, ${monthStart}, ${yearStart}</span>`;
         begin.setAttribute("style", "visibility:visible;")
         end.setAttribute("style", "visibility:visible;")
+        header.setAttribute("style", "visibility:visible")
         
     }
     
@@ -82,8 +88,9 @@ function getStartDate() {
     }
 }
 function getEndDate() {
-    end.setAttribute("style", "visibility:hidden;")
+    end.setAttribute("style", "display:none;")
     begin.setAttribute("style", "visibility:hidden;")
+    header.setAttribute("style", "visibility:hidden")
     for (let i = 2010; i < 2021; i++) {
         const paraYear = document.createElement("div");
         paraYear.innerHTML = `${i}`;
@@ -132,9 +139,10 @@ function getEndDate() {
     function writeToDay(val2) {
         dayEnd = val2;
         delChildren();
-        end.innerHTML = `End Date: ${dayEnd}, ${monthEnd}, ${yearEnd}`;
+        end.innerHTML = `<span>End Date: ${dayEnd}, ${monthEnd}, ${yearEnd}</span>`;
         end.setAttribute("style", "visibility:visible;")
         begin.setAttribute("style", "visibility:visible;")
+        header.setAttribute("style", "visibility:visible")
         if (yearStart !== 0 && dayEnd !== 0) {
     
 }

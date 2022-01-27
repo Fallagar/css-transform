@@ -4,34 +4,83 @@ body {
   justify-content: center;
   align-items: center;
 }
+/* HEADER STYLING */
+header {
+  display: flex;
+  gap: 2rem;
+}
+header > * {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+h2 {
+  margin-top: 0.01rem;
+  font-family: "Anton", sans-serif;
+  cursor: default;
+}
+span > img {
+  margin-top: 0.25rem;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+span > img:hover {
+  transition: all 0.5s ease-out;
+  transform: scale(1.5);
+  background-color: rgb(148, 174, 201);
+  border-radius: 5px;
+}
+#rld {
+  margin-right: 0.2rem;
+}
 
 #begin {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: flex;
   width: 300px;
+  padding: 0 1rem;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   font-family: "Anton", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 #end {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   visibility: hidden;
   display: flex;
+  padding: 0 1rem;
   width: 300px;
   justify-content: center;
   cursor: pointer;
   font-family: "Anton", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   position: absolute;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+#begin > span:hover,
+#end > span:hover {
+  transition: all 0.5s ease-out;
+  transform: scale(1.3);
+  border-radius: 5px;
+}
 #wrapper {
   justify-content: center;
   align-items: center;
@@ -44,13 +93,18 @@ body {
   transform: translate(-50%, -50%);
 }
 #wrapper > div {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-family: "Anton", sans-serif;
   align-items: center;
   border-radius: 5px;
   display: flex;
   margin: 2px;
   border: 1px solid rgb(80, 89, 92);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   height: 60px;
   width: 60px;
   display: flex;
