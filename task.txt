@@ -1,0 +1,13 @@
+1) Design :
+  -need to make window for result of calculations, think will do END and START date buttons to go up
+      to make space
+  -think about adding BEGIN button, do i really need it?
+      -if needed, should END and START date be flying from edges after pressing BEGIN?
+  -need to think about positions of elements, date picker absolute and others normal flow?
+      -CHECK that moving elements don't affect layout
+  -"created by" i think it's better to make subtle copyright in bottom-left/right corner
+  
+  2) Logic:
+    -oh boy
+    -learn how to make own libraries in JS to make code more reusable and clean
+    -make basic version without checks for leap years
