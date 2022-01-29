@@ -6,6 +6,7 @@
   -need to think about positions of elements, date picker absolute and others normal flow?
       -CHECK that moving elements don't affect layout
   -"created by" i think it's better to make subtle copyright in bottom-left/right corner
+	-MAYBE rewrite buttons to form/input instead of divs? Refer to WDB video about extracting values from forms
   
   2) Logic:
     -oh boy
