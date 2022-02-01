@@ -4,6 +4,10 @@ const begin = document.querySelector("#begin");
 const end = document.querySelector("#end");
 const reload = document.querySelector("#rld");
 const header = document.querySelector("header");
+const exec = document.querySelector("#execute");
+const result = document.querySelector("#result");
+const bodyS = document.querySelector("body");
+exec.addEventListener("click", () => { resulting() });
 reload.addEventListener("click", function () {location.reload()});
 begin.addEventListener("click", function () { getStartDate() });
 end.addEventListener("click", function () { getEndDate() });
@@ -21,7 +25,12 @@ var monthEnd = 0;
 var dayEnd = 0;
 
 
-
+function resulting() {
+    bodyS.classList.add("trans-body");
+    result.setAttribute("style", "visibility:visible;")
+    result.innerHTML = `The result is:<br /> Start:${yearStart}, ${monthStart}, ${dayStart} <br /> 
+End: ${yearEnd}, ${monthEnd}, ${dayEnd}` 
+}
 function getStartDate() {
     header.setAttribute("style", "visibility:hidden")
     begin.setAttribute("style", "display:none;")
@@ -144,6 +153,7 @@ function getEndDate() {
         begin.setAttribute("style", "visibility:visible;")
         header.setAttribute("style", "visibility:visible")
         if (yearStart !== 0 && dayEnd !== 0) {
+            exec.setAttribute("style", "visibility:visible;");
     
 }
     }
