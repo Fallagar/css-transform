@@ -16,11 +16,11 @@ end.addEventListener("click", function () { getEndDate() });
 
 
 const monthNamesObj = {
-    "Jan": 31, "Feb": 28, "Mar": 31, "April": 30, "May": 31, "Jun": 30,
-    "Jul": 31, "Aug": 31, "Sep": 30, "Oct": 31, "Nov": 30, "Dec": 31
+    "Jan": [1, 31], "Feb": [2, 28], "Mar": [3, 31], "April": [4, 30], "May": [5,31], "Jun": [6,30],
+    "Jul": [7, 31], "Aug": [8, 31], "Sep": [9, 30], "Oct": [10, 31], "Nov": [11, 30], "Dec": [12, 31],
 }
 const monthNames = Object.keys(monthNamesObj);
-
+var monthEndLiteral = 0;
 var yearStart = 0;
 var monthStart = 0;
 var dayStart = 0;
@@ -31,6 +31,7 @@ var dayEnd = 0;
 
 function resulting() {
     bodyS.classList.add("trans-body");
+    main.classList.add("trans-main");
     result.setAttribute("style", "visibility:visible;")
     let final = [yearStart, monthStart, dayStart, yearEnd, monthEnd, dayEnd];
     console.log(`${final}`)
@@ -94,8 +95,8 @@ function getStartDate() {
         var countDays = 0;
         monthStart = Object.keys(monthNamesObj).indexOf(val)+1;
         delChildren();       
-        console.log(`I am here, value is ${val},  Object is - ${monthNamesObj[val]}`);
-        for (let i = 1; i <= monthNamesObj[val]; i++) {
+        console.log(`I am here, value is ${val},  Object is - ${monthNamesObj[val][1]}`);
+        for (let i = 1; i <= monthNamesObj[val][1]; i++) {
             const paraDay = document.createElement("div");
             paraDay.innerHTML = `${i}`;
             document.querySelector("#wrapper").appendChild(paraDay);
@@ -164,10 +165,11 @@ function getEndDate() {
     }
     function writeToMonth(val) {
         var countDays = 0;
+        monthEndLiteral = val;
         monthEnd = Object.keys(monthNamesObj).indexOf(val) +1 ;
         delChildren();       
-        console.log(`I am here, value is ${val},  Object is - ${monthNamesObj[val]}`);
-        for (let i = 1; i <= monthNamesObj[val]; i++) {
+        console.log(`I am here, value is ${val},  Object is - ${monthNamesObj[val][1]}`);
+        for (let i = 1; i <= monthNamesObj[val][1]; i++) {
             const paraDay = document.createElement("div");
             paraDay.innerHTML = `${i}`;
             document.querySelector("#wrapper").appendChild(paraDay);
@@ -186,7 +188,7 @@ function getEndDate() {
     function writeToDay(val2) {
         dayEnd = parseInt(val2);
         delChildren();
-        end.innerHTML = `<span>End Date: ${dayEnd}, ${monthEnd}, ${yearEnd}</span>`;
+        end.innerHTML = `<span>End Date: ${dayEnd}, ${monthEndLiteral}, ${yearEnd}</span>`;
         end.setAttribute("style", "visibility:visible;")
         begin.setAttribute("style", "visibility:visible;")
         header.setAttribute("style", "visibility:visible")

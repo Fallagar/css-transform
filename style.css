@@ -50,6 +50,7 @@ main {
   width: 320px;
   gap: 10px;
   transition: all 2s ease-out;
+  gap: 50px;
 }
 /* p {
 } */
@@ -133,8 +134,12 @@ main {
 }
 /* CLASS FOR TRANSFORM */
 .trans-body {
-  transition: all 0.5s ease-out;
+  transition: all 0.8s ease-out;
   gap: 5vh;
+}
+.trans-main {
+  transition: all 0.8s ease-out;
+  gap: 10px;
 }
 /* JS BUTTONS */
 #wrapper {
