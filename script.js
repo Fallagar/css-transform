@@ -7,16 +7,19 @@ const header = document.querySelector("header");
 const exec = document.querySelector("#execute");
 const result = document.querySelector("#result");
 const bodyS = document.querySelector("body");
+const main = document.querySelector("main");
 exec.addEventListener("click", () => { resulting() });
 reload.addEventListener("click", function () {location.reload()});
 begin.addEventListener("click", function () { getStartDate() });
 end.addEventListener("click", function () { getEndDate() });
+
 
 const monthNamesObj = {
     "Jan": 31, "Feb": 28, "Mar": 31, "April": 30, "May": 31, "Jun": 30,
     "Jul": 31, "Aug": 31, "Sep": 30, "Oct": 31, "Nov": 30, "Dec": 31
 }
 const monthNames = Object.keys(monthNamesObj);
+
 var yearStart = 0;
 var monthStart = 0;
 var dayStart = 0;
@@ -32,9 +35,13 @@ function resulting() {
 End: ${yearEnd}, ${monthEnd}, ${dayEnd}` 
 }
 function getStartDate() {
+    bodyS.classList.remove("trans-body");
+    result.innerHTML = "";
     header.setAttribute("style", "visibility:hidden")
-    begin.setAttribute("style", "display:none;")
+    begin.setAttribute("style", "visibility:hidden;")
     end.setAttribute("style", "visibility:hidden;")
+    result.setAttribute("style", "visibility:hidden;")
+    exec.setAttribute("style", "visibility:hidden;")
     for (let i = 2010; i < 2021; i++) {
         const paraYear = document.createElement("div");
         paraYear.innerHTML = `${i}`;
@@ -87,7 +94,9 @@ function getStartDate() {
         begin.setAttribute("style", "visibility:visible;")
         end.setAttribute("style", "visibility:visible;")
         header.setAttribute("style", "visibility:visible")
-        
+        if (yearStart !== 0 && dayEnd !== 0) {
+            exec.setAttribute("style", "visibility:visible;");
+        }
     }
     
     function delChildren() {
@@ -97,10 +106,15 @@ function getStartDate() {
     }
 }
 function getEndDate() {
+    bodyS.classList.remove("trans-body");
+    result.innerHTML = "";
     end.setAttribute("style", "display:none;")
+    exec.setAttribute("style", "visibility:hidden;")
     begin.setAttribute("style", "visibility:hidden;")
     header.setAttribute("style", "visibility:hidden")
-    for (let i = 2010; i < 2021; i++) {
+    result.setAttribute("style", "visibility:hidden;")
+    exec.setAttribute("style", "visibility:hidden;")
+     for (let i = 2010; i < 2021; i++) {
         const paraYear = document.createElement("div");
         paraYear.innerHTML = `${i}`;
         document.querySelector("#wrapper").appendChild(paraYear);
@@ -152,10 +166,10 @@ function getEndDate() {
         end.setAttribute("style", "visibility:visible;")
         begin.setAttribute("style", "visibility:visible;")
         header.setAttribute("style", "visibility:visible")
+        // exec.setAttribute("style", "visibility:visible;")
         if (yearStart !== 0 && dayEnd !== 0) {
             exec.setAttribute("style", "visibility:visible;");
-    
-}
+        }
     }
     
     function delChildren() {
