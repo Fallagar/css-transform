@@ -8,6 +8,7 @@ const exec = document.querySelector("#execute");
 const result = document.querySelector("#result");
 const bodyS = document.querySelector("body");
 const main = document.querySelector("main");
+const firstDayOfMonth = [0, 1, 32, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
 exec.addEventListener("click", () => { resulting() });
 reload.addEventListener("click", function () {location.reload()});
 begin.addEventListener("click", function () { getStartDate() });
@@ -31,8 +32,31 @@ var dayEnd = 0;
 function resulting() {
     bodyS.classList.add("trans-body");
     result.setAttribute("style", "visibility:visible;")
-    result.innerHTML = `The result is:<br /> Start:${yearStart}, ${monthStart}, ${dayStart} <br /> 
-End: ${yearEnd}, ${monthEnd}, ${dayEnd}` 
+    let final = [yearStart, monthStart, dayStart, yearEnd, monthEnd, dayEnd];
+    console.log(`${final}`)
+    calc(final);
+}
+function calc(date) {
+    let cStart = 0; let cEnd = 0; let cResult = 0;
+    if (date[0] === date[3]) {
+        cStart = firstDayOfMonth[date[1]] + date[2] - 1;
+        console.log(`One: ${firstDayOfMonth[date[4]]}, Two ${date[5]} `)
+        cEnd = firstDayOfMonth[date[4]] + date[5] - 1;
+        cResult = (cEnd - cStart);
+        console.log("IF....")
+    }
+    else {
+        console.log(`${cStart, cEnd, cResult}`)
+        console.log(`One: ${firstDayOfMonth[date[4]]}, Two ${date[5]} `)
+        console.log(`y${date[0]},m${date[1]},d${date[2]},yt${date[3]},mt${date[4]},dt${date[5]}` + " "+ typeof date[4])
+        cStart = 365 - firstDayOfMonth[date[1]] - date[2] + 1;
+        cEnd = firstDayOfMonth[date[4]] + date[5] - 1;
+        cResult = cStart + cEnd;
+        console.log(`ELSE...${cResult}`)
+    }
+    result.innerHTML = `Between these dates <br /> has passed <br />
+    <span style="color:red">${cResult}</span> day(s) <br /> <h6>Enter new date(s) and press "execute"
+    to repeat</h6>`;
 }
 function getStartDate() {
     bodyS.classList.remove("trans-body");
@@ -54,7 +78,7 @@ function getStartDate() {
     }
 
     function writeToYear(inner) {
-        yearStart = inner;
+        yearStart = parseInt(inner);
         delChildren();
         for (let i = 0; i < 12; i++) {
             const paraMonth = document.createElement("div");
@@ -68,7 +92,7 @@ function getStartDate() {
     }
     function writeToMonth(val) {
         var countDays = 0;
-        monthStart = val;
+        monthStart = Object.keys(monthNamesObj).indexOf(val)+1;
         delChildren();       
         console.log(`I am here, value is ${val},  Object is - ${monthNamesObj[val]}`);
         for (let i = 1; i <= monthNamesObj[val]; i++) {
@@ -88,7 +112,7 @@ function getStartDate() {
         countDays = 0;
     }
     function writeToDay(val2) {
-        dayStart = val2;
+        dayStart = parseInt(val2);
         delChildren();
         begin.innerHTML = `<span>Start Date: ${dayStart}, ${monthStart}, ${yearStart}</span>`;
         begin.setAttribute("style", "visibility:visible;")
@@ -126,7 +150,7 @@ function getEndDate() {
     }
 
     function writeToYear(inner) {
-        yearEnd = inner;
+        yearEnd = parseInt(inner);
         delChildren();
         for (let i = 0; i < 12; i++) {
             const paraMonth = document.createElement("div");
@@ -140,7 +164,7 @@ function getEndDate() {
     }
     function writeToMonth(val) {
         var countDays = 0;
-        monthEnd = val;
+        monthEnd = Object.keys(monthNamesObj).indexOf(val) +1 ;
         delChildren();       
         console.log(`I am here, value is ${val},  Object is - ${monthNamesObj[val]}`);
         for (let i = 1; i <= monthNamesObj[val]; i++) {
@@ -160,7 +184,7 @@ function getEndDate() {
         countDays = 0;
     }
     function writeToDay(val2) {
-        dayEnd = val2;
+        dayEnd = parseInt(val2);
         delChildren();
         end.innerHTML = `<span>End Date: ${dayEnd}, ${monthEnd}, ${yearEnd}</span>`;
         end.setAttribute("style", "visibility:visible;")
